@@ -5,11 +5,19 @@ import graph.core.Metrics;
 
 import java.util.*;
 
+/**
+ * Computes single-source shortest paths and longest paths in a DAG.
+ *
+ * <p>Shortest paths use relaxation in topological order.
+ * Longest paths use max-DP over the same order.
+ */
 
 public class DAGShortestPath {
     private final Metrics metrics;
 
     public DAGShortestPath(Metrics metrics) { this.metrics = metrics; }
+
+    public Metrics getMetrics() { return metrics; }
 
     public static class Result {
         public final double[] dist;
@@ -17,20 +25,20 @@ public class DAGShortestPath {
         public Result(double[] dist, int[] parent) { this.dist = dist; this.parent = parent; }
     }
 
-
     public Result shortestPaths(Graph dag, int source, List<Integer> topo) {
         long t0 = System.nanoTime();
         int n = dag.n();
-        double INF = 1e100;
+        double INF = Double.POSITIVE_INFINITY;
         double[] dist = new double[n];
         Arrays.fill(dist, INF);
         int[] parent = new int[n];
         Arrays.fill(parent, -1);
         dist[source] = 0.0;
 
-        // process vertices in topo order
+        // process in topo order
+        Set<Integer> topoSet = new HashSet<>(topo); // optional check
         for (int u : topo) {
-            if (dist[u] >= INF / 2) continue;
+            if (dist[u] == INF) continue;
             for (Graph.Edge e : dag.adj().get(u)) {
                 if (dist[e.v] > dist[u] + e.w) {
                     dist[e.v] = dist[u] + e.w;
@@ -43,18 +51,17 @@ public class DAGShortestPath {
         return new Result(dist, parent);
     }
 
-
     public Result longestPath(Graph dag, List<Integer> topo) {
         long t0 = System.nanoTime();
         int n = dag.n();
-        double NEG = -1e100;
+        double NEG = Double.NEGATIVE_INFINITY;
         double[] dp = new double[n];
         Arrays.fill(dp, NEG);
         int[] parent = new int[n];
         Arrays.fill(parent, -1);
 
         for (int v : topo) {
-            if (dp[v] == NEG) dp[v] = 0.0; // new chain start
+            if (dp[v] == NEG) dp[v] = 0.0; // start new chain at v
             for (Graph.Edge e : dag.adj().get(v)) {
                 if (dp[e.v] < dp[v] + e.w) {
                     dp[e.v] = dp[v] + e.w;
@@ -67,10 +74,14 @@ public class DAGShortestPath {
         return new Result(dp, parent);
     }
 
-    public static List<Integer> reconstruct(int target, int[] parent) {
+    public static List<Integer> reconstructPath(int target, int[] parent) {
         List<Integer> path = new ArrayList<>();
         for (int v = target; v != -1; v = parent[v]) path.add(v);
         Collections.reverse(path);
         return path;
+    }
+
+    public static List<Integer> reconstructShortestPath(int target, int[] parent) {
+        return reconstructPath(target, parent);
     }
 }

@@ -3,12 +3,11 @@ package graph.core;
 import com.google.gson.*;
 import java.io.*;
 import java.nio.file.*;
-import java.util.*;
 
 
 public class JsonLoader {
     public static class InputGraph {
-        public boolean directed;
+        public boolean directed = true;
         public int n;
         public Edge[] edges;
         public Integer source;
@@ -27,6 +26,7 @@ public class JsonLoader {
         String json = Files.readString(Path.of(path));
         Gson gson = new Gson();
         InputGraph ig = gson.fromJson(json, InputGraph.class);
+        if (ig == null) throw new IOException("Invalid JSON or empty file: " + path);
         Graph g = new Graph(ig.n, ig.directed);
         if (ig.edges != null) {
             for (InputGraph.Edge e : ig.edges) g.addEdge(e.u, e.v, e.w);

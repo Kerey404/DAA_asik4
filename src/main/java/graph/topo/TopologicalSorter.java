@@ -4,6 +4,13 @@ import graph.core.Graph;
 import graph.core.Metrics;
 
 import java.util.*;
+/**
+ * Implements Kahn's algorithm for topological sorting of a DAG.
+ *
+ * <p>Returns a valid topological order of all vertices.
+ * Also tracks operation metrics (pushes, pops, time).
+ */
+
 
 public class TopologicalSorter {
     private final Metrics metrics;
@@ -28,7 +35,8 @@ public class TopologicalSorter {
             }
         }
         metrics.timeNs = System.nanoTime() - t0;
-        if (order.size() != n) throw new IllegalStateException("Graph is not a DAG (cycle exists in condensation).");
+        if (order.size() != n) throw new IllegalStateException("Graph is not a DAG (cycle exists).");
         return order;
     }
+    public Metrics getMetrics() { return metrics; }
 }

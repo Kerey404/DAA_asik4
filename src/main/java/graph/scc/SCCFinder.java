@@ -4,6 +4,15 @@ import graph.core.Graph;
 import graph.core.Metrics;
 
 import java.util.*;
+/**
+ * Implements Tarjan's algorithm for finding Strongly Connected Components (SCCs)
+ * in a directed graph.
+ *
+ * <p>Outputs component ids, count, and full component lists.
+ * Used in condensation graph construction.
+ *
+ * Complexity: O(V + E)
+ */
 
 
 public class SCCFinder {
@@ -14,8 +23,9 @@ public class SCCFinder {
     private Deque<Integer> stack;
     private int compCount;
 
-    public SCCFinder(Metrics metrics) { this.metrics = metrics; }
-
+    public SCCFinder(Metrics metrics) {
+        this.metrics = metrics;
+    }
 
     public List<List<Integer>> findSCCs(Graph g) {
         long t0 = System.nanoTime();
@@ -65,4 +75,5 @@ public class SCCFinder {
 
     public int[] getComponentIds() { return compId; }
     public int getComponentCount() { return compCount; }
+    public Metrics getMetrics() { return metrics; }
 }

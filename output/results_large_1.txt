@@ -1,0 +1,41 @@
+Loaded: large_1 (n=25, edges=68, directed=true, weight_model=edge, source=3)
+
+=== SCC ===
+SCC count = 3
+  SCC#0 (size=1): [13]
+  SCC#1 (size=23): [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  SCC#2 (size=1): [4]
+SCC metrics: dfsCalls=25, edgesVisited=68, timeMs=0,140
+
+=== Condensation (min-weights for SP) ===
+components=3, edges=2
+  0 -> []
+  1 -> [0(w=2,000)]
+  2 -> [1(w=1,000)]
+
+=== Topological order of components ===
+[2, 1, 0]
+Topo metrics: pushes=3, pops=3, timeMs=0,048
+
+Derived tasks order (expand SCCs in topo order):
+[4, 0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 13]
+
+=== Shortest paths on condensation (single-source) ===
+Source original vertex=3 -> component=1
+ comp 0 : 2,000
+ comp 1 : 0,000
+ comp 2 : INF
+Example shortest path to comp 0: [1, 0]  (length=2,000)
+SP metrics: relaxations=1, timeMs=0,041
+
+=== Longest (critical) path on condensation ===
+Critical path (components): [2, 1, 0], length=7,000
+LP metrics: relaxations=2, timeMs=0,011
+
+=== Final Metrics Summary ===
+SCC: dfsCalls=25, edgesVisited=68, timeMs=0,140
+Topo: pushes=3, pops=3, timeMs=0,048
+SP: relaxations=0, timeMs=0,000
+LP: relaxations=2, timeMs=0,011
+
+Results saved to: C:\Users\umbtl\IdeaProjects\assignment4-smartcity\output\results_large_1.txt

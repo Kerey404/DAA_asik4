@@ -1,0 +1,35 @@
+Loaded: small_3 (n=6, edges=12, directed=true, weight_model=edge, source=0)
+
+=== SCC ===
+SCC count = 1
+  SCC#0 (size=6): [0, 1, 2, 3, 4, 5]
+SCC metrics: dfsCalls=6, edgesVisited=12, timeMs=0,110
+
+=== Condensation (min-weights for SP) ===
+components=1, edges=0
+  0 -> []
+
+=== Topological order of components ===
+[0]
+Topo metrics: pushes=1, pops=1, timeMs=0,048
+
+Derived tasks order (expand SCCs in topo order):
+[0, 1, 2, 3, 4, 5]
+
+=== Shortest paths on condensation (single-source) ===
+Source original vertex=0 -> component=0
+ comp 0 : 0,000
+No reachable other components from source.
+SP metrics: relaxations=0, timeMs=0,050
+
+=== Longest (critical) path on condensation ===
+Critical path (components): [0], length=0,000
+LP metrics: relaxations=0, timeMs=0,004
+
+=== Final Metrics Summary ===
+SCC: dfsCalls=6, edgesVisited=12, timeMs=0,110
+Topo: pushes=1, pops=1, timeMs=0,048
+SP: relaxations=0, timeMs=0,000
+LP: relaxations=0, timeMs=0,004
+
+Results saved to: C:\Users\umbtl\IdeaProjects\assignment4-smartcity\output\results_small_3.txt
