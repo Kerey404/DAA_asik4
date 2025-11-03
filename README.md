@@ -1,5 +1,4 @@
----
-#Assignment 4 — Smart City / Smart Campus Scheduling
+# Assignment 4 — Smart City / Smart Campus Scheduling
 
 Course: Design and Analysis of Algorithms (DAA)
 
