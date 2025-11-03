@@ -1,9 +1,10 @@
 ---
-Assignment 4 — Smart City / Smart Campus Scheduling
+#Assignment 4 — Smart City / Smart Campus Scheduling
 
-Course: Design and Analysis of Algorithms (DAA)
-Student: Bakytzhan Kassymgali 
-Group: SE-2421
+#Course: Design and Analysis of Algorithms (DAA)
+#Student: Bakytzhan Kassymgali 
+#Group: SE-2421
+
 ---
 Goal
 
