@@ -1,15 +1,19 @@
 ---
 #Assignment 4 — Smart City / Smart Campus Scheduling
 
-#Course: Design and Analysis of Algorithms (DAA)
-#Student: Bakytzhan Kassymgali 
-#Group: SE-2421
+Course: Design and Analysis of Algorithms (DAA)
+
+Student: Bakytzhan Kassymgali 
+
+Group: SE-2421
 
 ---
 Goal
 
 The goal of this assignment is to consolidate two course topics in one practical scenario:
+
 Strongly Connected Components (SCC) & Topological Ordering
+
 and Shortest Paths in Directed Acyclic Graphs (DAGs).
 
 The project models Smart City / Smart Campus scheduling —
@@ -29,7 +33,9 @@ Implemented Algorithms
 ---
 
 Datasets
+
 Nine datasets were generated to test algorithms on different structures and densities.
+
 | Category   | Nodes | Description                            | Variants |
 | ---------- | ----- | -------------------------------------- | -------- |
 | **Small**  | 6–10  | Simple DAGs or few cycles              | 3        |
@@ -38,7 +44,8 @@ Nine datasets were generated to test algorithms on different structures and dens
 [data](https://github.com/Kerey404/DAA_asik4/tree/main/data)
 
 ---
-Metrics and Instrumentation
+Metrics and Instrumentation 
+
 | Algorithm            | Metrics Counted                          |
 | -------------------- | ---------------------------------------- |
 | **SCC (Tarjan)**     | DFS calls, edges visited, execution time |
@@ -48,12 +55,16 @@ Metrics and Instrumentation
 ---
 Tests
 JUnit tests are implemented under src/test/java/graph/:
+
 SCCFinderTest.java — detects SCC count and correctness.
+
 TopologicalSorterTest.java — verifies valid topological order.
+
 DAGShortestPathTest.java — checks correctness of shortest/longest path DP.
 
 ---
 Results Summary
+
 | Dataset  | Nodes | Edges | SCCs | Topo Time (ms) | Critical Path |
 | -------- | ----- | ----- | ---- | -------------- | ------------- |
 | small_1  | 8     | 18    | 3    | 0.063          | 3.0           |
@@ -64,15 +75,23 @@ Results Summary
 Report & Analysis
 
 A detailed analytical report includes:
+
 Data summary (nodes, edges, density, cyclicity)
+
 Per-task metrics and timing results
+
 Bottleneck analysis: effect of graph structure, SCC size, and density
+
 Practical recommendations for algorithm use
+
 File:[Analysis](https://github.com/Kerey404/DAA_asik4/blob/main/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0_%D0%B4%D0%B0%D0%B0.docx)
 ---
 Conclusions
 
 Tarjan (SCCFinder) — best for dense cyclic networks.
+
 Kahn Topological Sort — optimal for task scheduling and dependency analysis.
+
 DAG Shortest/Longest Path — ideal for workflow or critical path planning.
+
 Combination of these methods yields optimal graph analysis for real Smart City / Smart Campus task scheduling.
